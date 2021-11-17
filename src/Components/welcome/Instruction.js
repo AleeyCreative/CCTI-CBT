@@ -32,18 +32,17 @@ class Instruction extends React.Component {
     return (
       <div>
         <Paper className={classes.root} elevation={0}>
-        <img src={image} alt="instructor" style={{width: "200px", marginBottom: 10}} />
-          <Typing>
+        <Typing>
             <Typography variant="headline" component="h3">
             <Typing.Delay ms={500} />Hi - <Typing.Delay ms={1000} />
               {candidate === null || candidate.length === 0 ? guest : candidate[0].fullName}
               <Typing.Delay ms={500} />
             </Typography>
             <Typography className={classes.text} variant="body2" component="p">
-              You have 50 questions <Typing.Delay ms={1000} />
+              You have 10 questions <Typing.Delay ms={1000} />
             </Typography>
             <Typography className={classes.text} variant="body2" component="p">
-              30 minutes to answer all <Typing.Delay ms={1000} />
+              15 minutes to answer all <Typing.Delay ms={1000} />
             </Typography>
             <Typography className={classes.text} variant="body2" component="p">
               Click on <strong> Start Test</strong> to start

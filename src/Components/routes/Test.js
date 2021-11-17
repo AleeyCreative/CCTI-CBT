@@ -50,6 +50,7 @@ class Test extends React.Component {
     this.setTime();
     localStorage.setItem('questionNo', JSON.stringify([]));
     localStorage.setItem('candidateScore', String(0));
+    localStorage.setItem('answeredQuestions', JSON.stringify([]));
   }
 
   CountDown() {
@@ -121,9 +122,18 @@ class Test extends React.Component {
       localStorage.setItem('candidateScore', String(questionNos.length));
     }
   }
+handleAnsweredQuestion = (quesNo) => {
+  const questionNo = String(quesNo)
+  const answeredQuestions = JSON.stringify(localStorage.getItem('answeredQuestions'))
+  if(!answeredQuestions.includes(questionNo)) {
+    let allAnsweredQuestions = answeredQuestions.concat(questionNo)
+    localStorage.setItem('answeredQuestions', JSON.stringify(allAnsweredQuestions))
+  }
+}
+
 
   setTime = () => {
-    const examTime = Date.parse(new Date()) + (1000 * 60 * 30) - Date.parse(new Date());
+    const examTime = Date.parse(new Date()) + (1000 * 60 * 15) - Date.parse(new Date());
     this.setState({ examTime });
     this.timer = setInterval(() => this.CountDown(), 1000);
     this.remainingTime();
@@ -174,7 +184,9 @@ class Test extends React.Component {
                   objective={question.obj}
                   key={question.id}
                   response={(quesNo) => this.response(quesNo)}
-                  checkQuestionNo={(quesNo) => this.checkQuestionNo(quesNo)} />
+                  checkQuestionNo={(quesNo) => this.checkQuestionNo(quesNo)} 
+                  handleAnsweredQuestion={quesNo => this.handleAnsweredQuestion(quesNo)}
+                  />
               ))}
 
             </SwipeableViews>

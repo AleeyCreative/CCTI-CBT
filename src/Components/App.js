@@ -48,7 +48,7 @@ function getSteps() {
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Please! ensure you read the information above, Before clicking on Next.';
+      return 'Please ensure you read the information above, Before clicking on Next.';
     case 1:
       return 'By clicking on next, You validate the information above';
     default:
