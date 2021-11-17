@@ -124,7 +124,7 @@ class Test extends React.Component {
   }
 handleAnsweredQuestion = (quesNo) => {
   const questionNo = String(quesNo)
-  const answeredQuestions = JSON.stringify(localStorage.getItem('answeredQuestions'))
+  const answeredQuestions = JSON.parse(localStorage.getItem('answeredQuestions'))
   if(!answeredQuestions.includes(questionNo)) {
     let allAnsweredQuestions = answeredQuestions.concat(questionNo)
     localStorage.setItem('answeredQuestions', JSON.stringify(allAnsweredQuestions))
@@ -161,6 +161,9 @@ handleAnsweredQuestion = (quesNo) => {
     const authenticated = localStorage.getItem('authenticated');
     const guest = localStorage.getItem('guest');
 
+    const candidateList = JSON.parse(localStorage.getItem('candidate'))
+    const userInfo = candidateList ? `${candidateList[0].fullName} (${candidateList[0].regNo})` : 'Guest'
+  
     return (
       <div className={classes.root}>
         {!!authenticated || !!guest ?
@@ -168,7 +171,7 @@ handleAnsweredQuestion = (quesNo) => {
             {this.state.submit === true ? <Redirect to="/submit-response" /> : null}
             {this.state.timeOut === true ? <Redirect to="/timeout" /> : null}
 
-            <Header examTime={this.remainingTime()} submit={this.handleSubmit} />
+            <Header examTime={this.remainingTime()} submit={this.handleSubmit} userInfo={userInfo} />
             <Paper square elevation={0} className={classes.header}>
               <Typography>{Questions[activeStep].id}. {Questions[activeStep].label}</Typography>
             </Paper>

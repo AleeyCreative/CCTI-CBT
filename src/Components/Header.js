@@ -34,13 +34,13 @@ const styles = theme => ({
 });
 
 function SimpleAppBar(props) {
-  const { classes, examTime, submit } = props;
+  const { classes, examTime, submit, userInfo } = props;
   return (
     <div className={classes.root}>
       <AppBar color="default">
         <Toolbar className={classes.text}>
           <Typography className={classes.headline} variant="headline" color="inherit">
-            CCTI CBT {new Date().getFullYear()}
+           {userInfo} | {new Date().getFullYear()}
           </Typography>
           <div style={{ display: "flex" }}>
             <div style={{ margin: "22px 18px", display: "flex" }}>
