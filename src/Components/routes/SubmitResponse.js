@@ -192,15 +192,15 @@ class SubmitResponse extends Component {
             <Paper className={classes.root} elevation={0}>
               {this.state.redirect === true ? <Redirect to="/" /> : null}
               {!!guest ?
-                <Typing >
+                
                   <Typography className={classes.typo} variant="headline" component="h3">
                     <ul className={classes.ul}>
                       <li className={classes.li}> <Typing.Delay ms={1500} />Hi - <Typing.Delay ms={1000} /> <strong> guest <i>!</i> </strong> <Typing.Delay ms={500} /> </li>
                       <li className={classes.li}> You scored {guestScore} <Typing.Delay ms={1500} /></li>
                     </ul>
                   </Typography>
-                </Typing> :
-                <Typing >
+                :
+                
                   <Typography className={classes.typo} variant="headline" component="h3">
                     <ul className={classes.ul}>
                       <li className={classes.li}> <Typing.Delay ms={1500} />Hi - <Typing.Delay ms={1000} /> <strong> {this.state.candidateData[0].fullName}  </strong> <Typing.Delay ms={500} /> </li>
@@ -211,7 +211,6 @@ class SubmitResponse extends Component {
                       <li className={classes.li}> It will be out by tomorrow or next.</li>
                     </ul>
                   </Typography>
-                </Typing>
               }
               <Button variant="outlined" className={classes.btn} onClick={this.handleGoHome}> Go Home </Button>
               <center>
